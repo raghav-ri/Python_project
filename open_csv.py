@@ -150,4 +150,25 @@ sns.heatmap(df.corr(numeric_only=True), annot=True, cmap='coolwarm')
 plt.show()
 
 
+# Gender-wise Disease Analysis
+sns.countplot(x='Disease', hue='Gender', data=df)
+plt.xticks(rotation=90)
+plt.title("Disease Count by Gender")
+plt.show()
+
+
+#Government vs. Private Hospital Use by Disease
+pd.crosstab(df['Disease'], df['Government Hospital Use']).plot(kind='bar', stacked=True, figsize=(12,6))
+plt.title("Hospital Type Preference per Disease")
+plt.ylabel("Patient Count")
+plt.xticks(rotation=90)
+plt.show()
+
+
+#Age Distribution for Specific Diseases (e.g., Diabetes or Cancer)
+sns.histplot(data=df[df['Disease'] == 'Diabetes'], x='Age', bins=15, kde=True, color='orange')
+plt.title("Age Distribution - Diabetes Patients")
+plt.show()
+
+
 
